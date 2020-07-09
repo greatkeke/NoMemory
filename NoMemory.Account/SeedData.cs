@@ -20,12 +20,12 @@ namespace NoMemory.Account
             var services = new ServiceCollection();
             services.AddOperationalDbContext(options =>
             {
-                options.ConfigureDbContext = db => db.UseSqlite(connectionString,
+                options.ConfigureDbContext = db => db.UseNpgsql(connectionString,
                     sql => sql.MigrationsAssembly(typeof(SeedData).Assembly.FullName));
             });
             services.AddConfigurationDbContext(options =>
             {
-                options.ConfigureDbContext = db => db.UseSqlite(connectionString,
+                options.ConfigureDbContext = db => db.UseNpgsql(connectionString,
                     sql => sql.MigrationsAssembly(typeof(SeedData).Assembly.FullName));
             });
 
